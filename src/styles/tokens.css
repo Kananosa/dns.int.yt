@@ -1,0 +1,88 @@
+:root {
+  /* === Color === */
+  --bg: #000000;
+  --surface: #0a0e14;
+  --surface-2: #0f1420;
+  --surface-hover: #131926;
+  --border: #1b2230;
+  --border-hover: #2a3346;
+
+  --blue: #4f6bff;
+  --blue-dim: #3a4fc7;
+  --blue-glow: rgba(79, 107, 255, 0.35);
+  --blue-tint: rgba(79, 107, 255, 0.08);
+
+  --gold: #d4af37;
+  --gold-bright: #f0c94c;
+  --gold-tint: rgba(212, 175, 55, 0.1);
+
+  --text: #e8e8ed;
+  --text-dim: #9aa2b5;
+  --text-faint: #5c637a;
+
+  --green: #3ecf8e;
+  --green-tint: rgba(62, 207, 142, 0.12);
+  --red: #ff5c72;
+
+  /* === Type === */
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* === Radius === */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+
+  /* === Shadow === */
+  --shadow-glow-blue: 0 0 40px -8px var(--blue-glow);
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.03) inset, 0 8px 24px -12px rgba(0,0,0,0.6);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+::selection { background: var(--blue-glow); color: #fff; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 720px) {
+  .container { padding: 0 20px; }
+}
