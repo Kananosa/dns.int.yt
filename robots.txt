@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /staff/
+Disallow: /panel/
+Disallow: /api/
+
+Sitemap: https://dns.int.yt/sitemap.xml
