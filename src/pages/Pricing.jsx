@@ -90,15 +90,14 @@ export default function Pricing() {
             <div className="buy-panel__icon">
               <Icon name="bag-shopping" size={20} />
             </div>
-            <h2>Paid tiers are switched on by hand</h2>
+            <h2>Contact us for Paid tiers</h2>
             <p>
-              There is no self-serve checkout. Message us and an admin moves your account onto the
-              tier — usually the same day. If you only need more domain slots, that is the entire
-              difference.
+              Message us and an admin moves your account onto the
+              tier If you wanna upgrades your plan and need more domain slots.
             </p>
             <div className="buy-panel__cta">
               <a href={DISCORD_URL} target="_blank" rel="noreferrer" className="btn btn--primary">
-                <Icon name="discord" size={14} /> Ask on Discord
+                <Icon name="discord" size={14} /> Contact us on Discord
               </a>
               <a href={`mailto:${ORG.email}`} className="btn btn--ghost">
                 <Icon name="envelope" size={14} /> {ORG.email}
@@ -115,7 +114,6 @@ export default function Pricing() {
         <div className="container">
           <div className="section-head">
             <h2>Side by side</h2>
-            <p>The identical rows are the point: nothing good is held back for a payment.</p>
           </div>
 
           <div className="table-wrap card">
