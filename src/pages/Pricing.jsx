@@ -92,8 +92,8 @@ export default function Pricing() {
             </div>
             <h2>Contact us for Paid tiers</h2>
             <p>
-              Message us and an admin moves your account onto the
-              tier If you wanna upgrades your plan and need more domain slots.
+              Message us and an admin moves your account onto the tier If you wanna upgrades your
+              plan and need more domain slots.
             </p>
             <div className="buy-panel__cta">
               <a href={DISCORD_URL} target="_blank" rel="noreferrer" className="btn btn--primary">
