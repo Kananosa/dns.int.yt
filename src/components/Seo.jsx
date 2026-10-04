@@ -1,44 +1,38 @@
 import { useEffect } from 'react'
+import { SITE_URL, pageTitle } from '../data/site.js'
 
-const SITE_NAME = 'Intent-DNS'
-const SITE_URL = 'https://dns.int.yt'
-const DEFAULT_IMAGE = `${SITE_URL}/favicon.png`
+const OG_IMAGE = `${SITE_URL}/og.png`
 
 /**
- * Sets document title + meta tags for the current page. Runs client-side
- * (this is a Vite SPA, not SSR), so search engines that execute JS will
- * pick these up on render; crawlers that don't render JS fall back to
- * whatever is in index.html's <head>, which mirrors the homepage's tags.
+ * Per-page document metadata.
+ *
+ * Pages are prerendered to static HTML at build time (scripts/prerender.mjs),
+ * which is what crawlers and link unfurlers actually read. This component
+ * exists for client-side navigation between routes, so the title and canonical
+ * stay correct after a soft navigation — it is a mirror of the static tags,
+ * never the only source of them.
  */
-export default function Seo({ title, description, path = '/', keywords }) {
+export default function Seo({ title, description, path = '/' }) {
+  const fullTitle = pageTitle(title)
+
   useEffect(() => {
-    const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} — Enterprise Anycast DNS, Free`
     document.title = fullTitle
 
     setMeta('description', description)
-    setMeta('keywords', keywords)
 
     setMeta('og:title', fullTitle, 'property')
     setMeta('og:description', description, 'property')
     setMeta('og:url', `${SITE_URL}${path}`, 'property')
-    setMeta('og:type', 'website', 'property')
-    setMeta('og:site_name', SITE_NAME, 'property')
-    setMeta('og:image', DEFAULT_IMAGE, 'property')
-
-    setMeta('twitter:card', 'summary_large_image')
-    setMeta('twitter:title', fullTitle)
-    setMeta('twitter:description', description)
-    setMeta('twitter:image', DEFAULT_IMAGE)
 
     setCanonical(`${SITE_URL}${path}`)
-  }, [title, description, path, keywords])
+  }, [fullTitle, description, path])
 
   return null
 }
 
 function setMeta(name, content, attr = 'name') {
   if (!content) return
-  let el = document.querySelector(`meta[${attr}="${name}"]`)
+  let el = document.head.querySelector(`meta[${attr}="${name}"]`)
   if (!el) {
     el = document.createElement('meta')
     el.setAttribute(attr, name)
@@ -48,7 +42,7 @@ function setMeta(name, content, attr = 'name') {
 }
 
 function setCanonical(url) {
-  let el = document.querySelector('link[rel="canonical"]')
+  let el = document.head.querySelector('link[rel="canonical"]')
   if (!el) {
     el = document.createElement('link')
     el.setAttribute('rel', 'canonical')
@@ -56,3 +50,5 @@ function setCanonical(url) {
   }
   el.setAttribute('href', url)
 }
+
+export { OG_IMAGE }
