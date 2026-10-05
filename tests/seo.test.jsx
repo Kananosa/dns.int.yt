@@ -3,6 +3,8 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { HOME, BRAND, pageTitle, ROUTES } from '../src/data/site.js'
 import Home from '../src/pages/Home.jsx'
+import Pricing from '../src/pages/Pricing.jsx'
+import DnsRecords from '../src/pages/DnsRecords.jsx'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
@@ -83,4 +85,28 @@ describe('one phrasing of the record limit', () => {
     expect(pageTitle('Pricing')).toBe(`Pricing · ${BRAND}`)
     expect(pageTitle(undefined)).toBe(homeTitle)
   })
+})
+
+/**
+ * prerender.mjs writes ROUTES into dist/<route>/index.html, so a crawler that
+ * reads the static file and a browser one second after hydration must see the
+ * same head. Every page once passed its own copy to <Seo>, and all three had
+ * drifted from the prerendered strings — hydration silently rewrote the head.
+ * Render each page and compare against the same table the build uses.
+ */
+describe('after client render the head still matches the prerendered one', () => {
+  const pages = { '/': Home, '/pricing': Pricing, '/dns-records': DnsRecords }
+
+  for (const route of ROUTES) {
+    it(`${route.path} keeps its prerendered title and description`, () => {
+      const Page = pages[route.path]
+      render(
+        <MemoryRouter>
+          <Page />
+        </MemoryRouter>,
+      )
+      expect(document.title).toBe(pageTitle(route.title))
+      expect(document.querySelector('meta[name="description"]')?.content).toBe(route.description)
+    })
+  }
 })

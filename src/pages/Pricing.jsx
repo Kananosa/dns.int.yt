@@ -12,11 +12,7 @@ export default function Pricing() {
 
   return (
     <>
-      <Seo
-        title="Pricing"
-        description="Free: 20 domains with 1,000 records each. Paid $1/mo: 100 domains. Unlimited $4/mo: unlimited domains and records. Same engine, same API, no feature walls."
-        path="/pricing"
-      />
+      <Seo path="/pricing" />
 
       <section className="page-hero">
         <div className="container">

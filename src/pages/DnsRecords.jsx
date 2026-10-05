@@ -12,11 +12,7 @@ export default function DnsRecords() {
 
   return (
     <>
-      <Seo
-        title="DNS Records — A, AAAA, ALIAS, CNAME, MX, TXT, SRV, NS, CAA"
-        description="All nine supported DNS record types with real zone-file examples, including ALIAS apex flattening. 1,000 records per domain, free on every plan."
-        path="/dns-records"
-      />
+      <Seo path="/dns-records" />
 
       <section className="page-hero">
         <div className="container">

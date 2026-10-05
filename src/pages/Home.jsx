@@ -47,10 +47,7 @@ export default function Home() {
 
   return (
     <>
-      <Seo
-        description="Free authoritative DNS hosting with apex ALIAS flattening and a REST API on every plan. 1,000 records per domain, no credit card required."
-        path="/"
-      />
+      <Seo path="/" />
 
       {/* Hero — the offer in the headline, the reason to care right under it. */}
       <section className="hero">
