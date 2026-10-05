@@ -20,7 +20,7 @@ export default function Pricing() {
 
       <section className="page-hero">
         <div className="container">
-          <h1>Pricing that doesn't punish growth</h1>
+          <h1>Pricing that doesn’t punish growth</h1>
           <p className="page-hero__sub">
             Every plan gets the same anycast infrastructure, the same REST API and the same{' '}
             {recordCount} record types. Only the number of zones changes — there is no record
