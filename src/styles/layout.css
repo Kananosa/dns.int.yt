@@ -253,3 +253,67 @@
     text-align: center;
   }
 }
+
+
+/* ===== Community recognition (bottom badges) ===== */
+.community-recognition {
+  padding: 36px 0 48px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  text-align: center;
+}
+.community-recognition__title {
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.community-recognition__desc {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+.community-recognition__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+.community-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.18s var(--ease),
+    border-color 0.18s var(--ease),
+    box-shadow 0.18s var(--ease),
+    background 0.18s var(--ease);
+}
+.community-badge:hover {
+  transform: translateY(-2px);
+  background: var(--surface-hover);
+  border-color: rgba(79, 107, 255, 0.4);
+  box-shadow: 0 8px 24px -4px var(--blue-glow);
+}
+.community-badge:active {
+  transform: translateY(0) scale(0.985);
+}
+.community-badge img {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: var(--r-sm);
+}
